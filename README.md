@@ -43,6 +43,8 @@ Place Adaptive Tone in the right side of the bar when prompted. You can move it 
 omarchy bar move io.github.doctor.adaptive-tone --section right
 ```
 
+On a slower machine, Omarchy's initial plugin scan can outlast the add command's short discovery wait. If add reports that the plugin is not known after cloning it successfully, wait a few seconds and run `omarchy plugin enable io.github.doctor.adaptive-tone`; do not add a second copy. This was encountered during the removal/reinstallation check on the 12-inch MacBook.
+
 Only one automatic color-temperature controller should be active. Disable scheduled hyprsunset profiles and other automatic temperature tools first. The plugin reuses a running hyprsunset instance, or starts a neutral instance if needed.
 
 If migrating from the original standalone service, stop it before enabling the plugin:
