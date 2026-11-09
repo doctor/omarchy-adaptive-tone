@@ -1,0 +1,15 @@
+name: Tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Controller and worker lifecycle
+        run: python3 -m unittest discover -s tests -v
+      - name: UI telemetry validation
+        run: node tests/model.test.cjs
+      - name: Python syntax
+        run: python3 -m py_compile backend.py model.py

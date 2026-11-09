@@ -1,0 +1,21 @@
+{
+  "title": "Adaptive Tone",
+  "mode.starting": "Starting…",
+  "mode.automatic": "Automatic",
+  "mode.manual": "Manual override · %1 min remaining",
+  "mode.paused": "Paused · current tone held",
+  "mode.error": "Needs attention",
+  "reading": "%1  ·  %2",
+  "target": "Automatic target: %1",
+  "auto": "Auto",
+  "pause": "Pause",
+  "warmth": "Dim-room tone: %1",
+  "warmer": "Warmer",
+  "cooler": "Cooler",
+  "speed": "Transition speed",
+  "responsive": "Responsive",
+  "gentle": "Gentle",
+  "slow": "Slow",
+  "explanation": "Uses light level to estimate comfortable warmth. This sensor cannot measure the color of room lighting. The Night Light button overrides automatic tone for one hour.",
+  "shortcuts": "A: Auto · P: Pause · Esc: Close"
+}
