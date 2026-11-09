@@ -10,13 +10,16 @@ Item {
   property var telemetry: ({ mode: "starting", error: "", settings: {} })
   readonly property bool running: worker.running
   property bool destroying: false
+  property string queuedControl: ""
 
   function send(action, values) {
+    const message = JSON.stringify({ action: action, values: values || {} }) + "\n"
     if (!worker.running) {
+      queuedControl = message
       worker.running = true
       return
     }
-    worker.write(JSON.stringify({ action: action, values: values || {} }) + "\n")
+    worker.write(message)
   }
   function pause() { send("pause") }
   function resume() { send("resume") }
@@ -26,6 +29,12 @@ Item {
     id: worker
     command: ["python", decodeURIComponent(Qt.resolvedUrl("backend.py").toString().replace(/^file:\/\//, "")), "run"]
     stdinEnabled: true
+    onStarted: {
+      if (root.queuedControl !== "") {
+        worker.write(root.queuedControl)
+        root.queuedControl = ""
+      }
+    }
     stdout: SplitParser {
       onRead: function(line) {
         var parsed = Model.parseState(line)

@@ -2,6 +2,8 @@
 
 Gentle display warmth that responds to your laptop's ambient light sensor. Cooler in bright surroundings, a little warmer in dim rooms, with smooth transitions instead of an abrupt day/night switch.
 
+![Adaptive Tone panel showing ambient light, display temperature, and controls](preview.png)
+
 **This is an approximation inspired by True Tone, not a recreation of it.** A lux sensor measures light level, not the color of room lighting. The warmth curve is a comfort preference: it cannot distinguish equally bright warm lamplight and cool daylight. Apple and True Tone are trademarks of Apple Inc.; this project is independent.
 
 ## Features
