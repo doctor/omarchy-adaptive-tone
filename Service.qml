@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell.Io
+import qs.Commons
 import "Model.js" as Model
 
 Item {
@@ -34,6 +35,20 @@ Item {
     onExited: function(code) {
       if (!root.destroying && code !== 0 && root.telemetry.mode !== "error")
         root.telemetry = { mode: "error", error: "The tone worker stopped", settings: {} }
+    }
+  }
+  ShellIpc {
+    target: "io.github.doctor.adaptive-tone"
+    function status(): string { return JSON.stringify(root.telemetry) }
+    function pause(): string { root.pause(); return "ok" }
+    function resume(): string { root.resume(); return "ok" }
+    function configure(values: string): string {
+      try {
+        const data = JSON.parse(values)
+        if (!data || typeof data !== "object" || Array.isArray(data)) return "invalid"
+        root.configure(data)
+        return "ok"
+      } catch (_) { return "invalid" }
     }
   }
   Component.onCompleted: worker.running = true

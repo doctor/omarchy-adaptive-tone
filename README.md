@@ -64,9 +64,9 @@ The temperature filter does not change backlight brightness. Hyprsunset's color 
 ### Terminal controls
 
 ```bash
-omarchy-shell shell call io.github.doctor.adaptive-tone status ''
-omarchy-shell shell call io.github.doctor.adaptive-tone pause ''
-omarchy-shell shell call io.github.doctor.adaptive-tone resume ''
+omarchy-shell io.github.doctor.adaptive-tone status
+omarchy-shell io.github.doctor.adaptive-tone pause
+omarchy-shell io.github.doctor.adaptive-tone resume
 ```
 
 ### Settings and local state
